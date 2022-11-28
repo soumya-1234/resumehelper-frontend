@@ -69,7 +69,7 @@
                 rdata: []
             }
         },
-        beforeCreate(){
+        beforeMount(){
             axios.get('https://resumehelpbackend.onrender.com/students/get')
             .then((response)=>{
                 this.formatPosts(response.data)

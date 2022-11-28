@@ -2,7 +2,7 @@
     <div>
       <section id="contact" class="contact">
         <div data-aos="fade-up">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/place/Damanjodi,+Odisha+763008/@19.3131336,84.7915999,14z/data=!4m5!3m4!1s0x3a3afdfe291cbf69:0x251c57ef2df943c3!8m2!3d18.7742992!4d82.9125036" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="container" data-aos="fade-up">
@@ -14,19 +14,19 @@
                 <div class="address">
                   <i class="bi bi-geo-alt"></i>
                   <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>A195 Damanjodi Koraput-763008 Odisha</p>
                 </div>
 
                 <div class="email">
                   <i class="bi bi-envelope"></i>
                   <h4>Email:</h4>
-                  <p>info@example.com</p>
+                  <p>soumya977761@example.com</p>
                 </div>
 
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>+1 5589 55488 55s</p>
+                  <p>+91 7991058337</p>
                 </div>
 
             </div>
