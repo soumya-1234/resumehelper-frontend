@@ -2,7 +2,7 @@
     <div>
       <section id="contact" class="contact">
         <div data-aos="fade-up">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/place/Damanjodi,+Odisha+763008/@19.3131336,84.7915999,14z/data=!4m5!3m4!1s0x3a3afdfe291cbf69:0x251c57ef2df943c3!8m2!3d18.7742992!4d82.9125036" frameborder="0" allowfullscreen></iframe>
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://goo.gl/maps/QujBg3VHq4cn3ijb7" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="container" data-aos="fade-up">
