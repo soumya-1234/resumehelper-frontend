@@ -8,12 +8,12 @@
                 </div>
                 <br><br>
                 <div class="card-body">
-                    <h3 class="card-title">Job Name : {{jtitle}}</h3><br>
-                    <h3 class="card-title">Job skills : {{skills}}</h3><br>
-                    <h3 class="card-title">Job Description : {{jdesc}}</h3><br>
-                    <h3 class="card-title">Company : {{company}}</h3><br>
-                    <h3 class="card-title">Recruiter Name : {{name}}</h3><br>
-                    <p class="card-text text-success" style="font-weight: 14px;">Send Resume to Email : {{email}}</p>
+                    <h4 class="card-title">Job Name : {{jtitle}}</h4><br>
+                    <h4 class="card-title">Job skills : {{skills}}</h4><br>
+                    <h4 class="card-title">Job Description : {{jdesc}}</h4><br>
+                    <h4 class="card-title">Company : {{company}}</h4><br>
+                    <h4 class="card-title">Recruiter Name : {{name}}</h4><br>
+                    <p class="card-text text-success" style="font-weight: 16px;">Send Resume to Email : {{email}}</p>
                 </div>
             </div>
         </div>

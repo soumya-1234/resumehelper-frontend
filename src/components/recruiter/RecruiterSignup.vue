@@ -10,6 +10,7 @@
                                 <div class="card-body p-5">
                                     <h2 class="text-uppercase text-center mb-5" style="color:blueviolet;">Create an account for Recruiter</h2>
                                     <p class="alert alert-success" v-if="boolr">Registered Successfully</p>
+                                    <p class="alert alert-warning" v-if="boolpass">{{passerr}}</p>
                                     <p class="alert alert-warning" v-if="bool4">Email already Registered</p>
                                     <form>
                                         <div class="form-outline mb-4" v-if="boole">
@@ -87,6 +88,8 @@ export default{
             boole2:true,
             boole3: true,
             bool4: false,
+            boolpass: false,
+            passerr:"",
             data:[]
         }
     },
@@ -101,6 +104,7 @@ export default{
         createacc(){
             var regexname = /^[a-zA-Z ]{3,30}$/;
             var regexemail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            var regexpassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
             if(this.formdata.name==""){
                 this.boole=false
             }
@@ -126,6 +130,14 @@ export default{
                 this.boole2=true
                 this.boole3=false
             }
+            else if(!regexpassword.test(this.formdata.password)){
+                this.boole=true
+                this.boole1=true
+                this.boole2=true
+                this.boolpass=true
+                this.passerr="Atleast 6 character Password must have atleast one special character and one number"
+                this.boole3=false
+            }
             else{
                 var count=0;
                 for(var i=0;i<this.data.length;i++){
@@ -142,6 +154,7 @@ export default{
                     Axios.post('https://resumehelpbackend.onrender.com/recruiters/create',this.formdata)
                     .then(response=>console.log(response))
                     .catch(error=>console.log(error))
+                    this.boolpass=false
                     this.bool=false
                     this.boole=true
                     this.boole1=true

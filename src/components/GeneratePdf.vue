@@ -1,5 +1,6 @@
 <template>
     <div>
+        <br>
         <div class="container" style="padding-top: 60px;">
             <button @click.prevent="generatePDF()" class="btn btn-success">Generate PDF</button><br><br>
             <vue-html2pdf

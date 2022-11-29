@@ -128,7 +128,7 @@ export default{
                 this.boole=true
                 this.boole1=true
                 this.bool=true
-                this.passerr="Password must have atleast one special character and one number"
+                this.passerr="Atleast 6 character Password must have atleast one special character and one number"
                 this.boole2=false
             }
             else if(this.cpassword==""){
