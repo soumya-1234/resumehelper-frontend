@@ -1,6 +1,6 @@
 <template>
     <div>
-      <section style="padding-top: 92px;" id="contact" class="contact">
+      <section style="padding-top: 84px;" id="contact" class="contact">
         <div data-aos="fade-up">
           <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Damanjodi&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen></iframe>
         </div>
