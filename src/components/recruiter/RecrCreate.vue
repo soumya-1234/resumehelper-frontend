@@ -1,57 +1,117 @@
 <template>
-    <div>
-        <h1 style="color:aqua;">Job Details</h1>
-        <section style="padding-top: 55px;">
-            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-                <div class="container h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                            <div class="card" style="border-radius: 15px;">
-                                <div class="card-body p-5">
-                                    <p class="alert alert-danger" v-if="bool">Empty fields are not allowed</p>
-                                    <p class="alert alert-success" v-if="bool1">{{message}} Successfully</p>
-                                    <form>
-                                        <div class="form-outline mb-4">
-                                        <input type="text" id="form3Example3cg" class="form-control form-control-lg" v-model.trim="formdata.jtitle"/>
-                                        <label class="form-label" for="form3Example3cg">Job Title</label>
-                                        </div>
+    <div class="job-create">
+        <div class="container py-5">
+            <!-- Header -->
+            <div class="section-header text-center mb-5">
+                <h1 class="display-5 mb-3">Create Job Posting</h1>
+                <p class="lead text-muted">Add a new job opportunity to your listings</p>
+            </div>
 
-                                        <div class="form-outline mb-4">
-                                        <input type="text" id="form3Example4cg" class="form-control form-control-lg" v-model.trim="formdata.skills"/>
-                                        <label class="form-label" for="form3Example4cg">Skills</label>
-                                        </div>
+            <div class="form-wrapper">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white border-0 py-4">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle me-3">
+                                <i class="fas fa-briefcase fa-2x"></i>
+                            </div>
+                            <h2 class="h4 mb-0">Job Details</h2>
+                        </div>
+                    </div>
 
-                                        <div class="form-outline mb-4">
-                                        <textarea type="text" id="form3Example4cg" class="form-control form-control-lg" v-model.trim="formdata.jdesc"></textarea>
-                                        <label class="form-label" for="form3Example4cg">Job Description</label>
-                                        </div>
-
-                                        <div class="d-flex justify-content-center" v-if="bool2">
-                                            <button type="button"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" @click.prevent="jdetails">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="card-body p-4">
+                        <!-- Alerts -->
+                        <div class="alerts mb-4">
+                            <div class="alert alert-danger d-flex align-items-center" v-if="bool" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                <div>Empty fields are not allowed</div>
+                            </div>
+                            <div class="alert alert-success d-flex align-items-center" v-if="bool1" role="alert">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <div>{{message}} Successfully</div>
                             </div>
                         </div>
+
+                        <form @submit.prevent="jdetails">
+                            <!-- Job Title -->
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fas fa-bookmark me-2 text-primary"></i>
+                                    Job Title
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg" 
+                                    v-model.trim="formdata.jtitle"
+                                    placeholder="e.g. Senior Software Engineer"
+                                />
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fas fa-tools me-2 text-primary"></i>
+                                    Required Skills
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg" 
+                                    v-model.trim="formdata.skills"
+                                    placeholder="e.g. JavaScript, React, Node.js"
+                                />
+                                <small class="form-text text-muted">
+                                    Separate multiple skills with commas
+                                </small>
+                            </div>
+
+                            <!-- Job Description -->
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fas fa-align-left me-2 text-primary"></i>
+                                    Job Description
+                                </label>
+                                <textarea 
+                                    class="form-control form-control-lg" 
+                                    v-model.trim="formdata.jdesc"
+                                    rows="5"
+                                    placeholder="Describe the role, responsibilities, and requirements..."
+                                ></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-flex justify-content-between align-items-center mt-5" v-if="bool2">
+                                <router-link 
+                                    :to="{path: '/recrhome', query: {rid: ssid}}"
+                                    class="btn btn-outline-primary">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Back to Dashboard
+                                </router-link>
+                                <button 
+                                    type="submit"
+                                    class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Create Job Posting
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-export default{
+
+export default {
     name: "RecrCreate",
-    data(){
-        return{
-            formdata:{
+    data() {
+        return {
+            formdata: {
                 rid: "",
                 jtitle: "",
                 skills: "",
-                jdesc:""
+                jdesc: ""
             },
             bool: false,
             bool1: false,
@@ -62,33 +122,157 @@ export default{
             message: ""
         }
     },
-    methods:{
-        jdetails(){
-            this.formdata.rid=this.ssid
-            if(this.formdata.jtitle==""){
-                this.bool=true
+    methods: {
+        async jdetails() {
+            this.formdata.rid = this.ssid
+            this.bool = false
+            this.bool1 = false
 
+            if (!this.formdata.jtitle || !this.formdata.skills || !this.formdata.jdesc) {
+                this.bool = true
+                return
             }
-            else if(this.formdata.skills==""){
-                this.bool=true
-                this.bool1=false
-            }
-            else if(this.formdata.jdesc==""){
-                this.bool=true
-                this.bool1=false
-            }
-            else{
-                axios.post("https://resumehelpbackend.onrender.com/recruiters/jobdet",this.formdata)
-                .then(response=>console.log(response))
-                .catch(error=>console.log(error))
-                this.bool=false
-                this.bool1=true
-                this.formdata.jtitle=""
-                this.formdata.skills=""
-                this.formdata.jdesc=""
-                this.message="Submitted"
+
+            try {
+                await axios.post("https://resumehelpbackend.onrender.com/recruiters/jobdet", this.formdata)
+                this.bool1 = true
+                this.message = "Job Posted"
+                this.formdata.jtitle = ""
+                this.formdata.skills = ""
+                this.formdata.jdesc = ""
+            } catch (error) {
+                console.error('Error creating job:', error)
+                this.bool = true
+                this.message = "Error creating job"
             }
         }
     }
 }
 </script>
+
+<style scoped>
+.job-create {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-control {
+    border: 2px solid #e2e8f0;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.1);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: 2px solid transparent;
+}
+
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.alert-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.alert-success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+}
+
+@media (max-width: 768px) {
+    .form-wrapper {
+        margin: 0 1rem;
+    }
+
+    .card-header {
+        padding: 1.5rem;
+    }
+
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column-reverse;
+    }
+}
+</style>

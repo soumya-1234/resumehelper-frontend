@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document Icon -->
+  <path d="M10 5C10 3.89543 10.8954 3 12 3H28C29.1046 3 30 3.89543 30 5V35C30 36.1046 29.1046 37 28 37H12C10.8954 37 10 36.1046 10 35V5Z" fill="#2563EB"/>
+  <path d="M15 12H25M15 18H25M15 24H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Text "Resume" -->
+  <text x="40" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2563EB">Resume</text>
+  
+  <!-- Text "Helper" -->
+  <text x="100" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#EF4444">Helper</text>
+</svg>
